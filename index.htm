@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+    <script src="../jquery lib/jquery-3.6.0.min.js"></script>
+    <title>Avarta - Thế Thân</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Syne Mono', monospace;
+        }
+        .container{
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        .top{
+            background-image: url(https://toplist.vn/images/800px/avatar-69698.jpg);
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: cover;
+            height: 62vh;
+            display: flex;
+            animation: bg 20s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+            animation-delay: 10s;
+        }
+        #title{
+            font-size: 34px;
+        }
+        .bottom{
+            height: 38vh;
+            width: 100%;
+        }
+        #options{
+            background-color: #000000cc;
+            color: #eee;
+            width: 35%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        button{
+            height: 50px;
+            width: 180px;
+            margin-top: 20px;
+            font-size: 28px;
+            border: none;
+            font-family: 'Lora', serif;
+        }
+        #btn-watch{
+            background-color: #ac0c0c;
+            color: white;
+        }
+        #btn-sign:hover{
+            background-color: rgb(75, 75, 15);
+        }
+        #btn-watch:hover{
+            background-color: rgb(75, 75, 15);
+        }
+        #control-text{
+            transform: rotate(90deg);
+            position: absolute;
+            left: -50px;
+            bottom: 60px;
+            opacity: 0.5;
+            font-size: 24px;
+        }
+        #next-bg{
+            width: 65%;
+            position: absolute;
+            bottom: 10px;
+            left: 180%;
+        }
+        i{
+            font-size: 18px;
+            color: #99a099db;
+        }
+        i:first-child{
+            font-size: 25px;
+        }
+        .bottom{
+            display: flex;
+            background-image: linear-gradient(to right bottom, #242424, #0f0f0f);
+        }
+        .bottom #stt{
+            width: 20%;
+            font-size: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777777;
+            border-right: #cccccc47 solid 1px;
+        }
+        #des{
+            width: calc(80% - 1px);
+            padding: 40px;
+        }
+        #des #namefilm{
+            color: white;
+            font-size: 35px;
+        }
+        #control-des{
+            color: #777777;
+            font-size: 18px;
+        }
+        #year{
+            display: flex;
+            align-items: center;
+        }
+        #control-des #year #dash{
+            width: 30px;
+            height: 1px;
+            border-top: 4px solid white;
+        }
+        @media only screen and (max-width: 400px){
+            .bottom #stt{
+                display: none;
+            }
+            #options{
+                width: 100%;
+            }
+            .top{
+                height: 50vh;
+            }
+            .bottom{
+                height: 50vh;
+            }
+            #des{
+                width: 100%;
+                padding: 10px;
+            }
+            #title{
+                font-size: 28px;
+            }
+            button{
+                height: 35px;
+                width: 130px;
+                font-size: 20px;
+            }
+            .top{
+                height: 40vh;
+            }
+            .bottom{
+                height: 60vh;
+            }
+            #des #namefilm{
+                font-size: 24px;
+            }
+
+        }
+        @media only screen and (min-width: 400px){
+            .bottom #stt{
+                display: none;
+            }
+            #options{
+                width: 100%;
+            }
+            .top{
+                height: 50vh;
+            }
+            .bottom{
+                height: 50vh;
+            }
+            #next-bg{
+                left: 45%;
+            }
+            #des{
+                width: 100%;
+            }
+            #des #namefilm{
+                font-size: 24px;
+            }
+            #control-des{
+            font-size: 17px;
+            }
+            #title{
+                font-size: 30px;
+            }
+            
+        }
+        @media screen and (min-width: 600px){
+            #next-bg{
+                left: 45%;
+            }
+            .bottom #stt{
+                display: flex;
+            }
+            .top{
+                height: 55vh;
+            }
+            .bottom{
+                height: 45vh;
+            }
+            .bottom #stt{
+                font-size: 80px;
+                width: 30%;
+            }
+            .top{
+                height: 50vh;
+            }
+            .bottom{
+                height: 50vh;
+            }
+            #des #namefilm{
+                font-size: 24px;
+            }
+        }
+        @media screen and (min-width: 768px){
+            #options{
+                width: 50%;
+            }
+            #title{
+                font-size: 24px;
+            }
+            #next-bg{
+                left: 140%;
+            }
+            .top{
+                height: 62vh;
+            }
+            .bottom{
+                height: 38vh;
+            }
+            #des #namefilm{
+                font-size: 28px;
+            }
+        }
+        @media screen and (min-width: 900px){
+            #title{
+                font-size: 26px;
+            }
+            .bottom #stt{
+            font-size: 100px;
+            }
+            #options{
+                width: 35%;
+            }
+            button{
+                height: 40px;
+                width: 150px;
+                font-size: 24px;
+            }
+            #next-bg{
+                left: 180%;
+            }
+        }
+        @media screen and (min-width: 1200px) {
+            #title{
+                font-size: 34px;
+            }
+            button{
+                height: 50px;
+                width: 180px;
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- container -->
+    <div class="container">
+
+        <!-- top -->
+        <div class="top">
+
+            <!-- options -->
+            <div id="options">
+                <div id="content">
+                    <p id="title">02. Avartar - Thế Thân</p>
+                    <a href="https://biluu.org/xem-phim/15963.190588-aquaman-de-vuong-atlantis-tap-full-s2"><button id="btn-watch"><i class="far fa-play-circle" style="margin: 0px; color:green"></i>Watch</button></a>
+                    <button id="btn-sign">Sign in</button>
+                </div>
+                <div id="control-text">
+                    <span>fa</span>
+                    <span>Ins</span>
+                    <span>You</span>
+                </div>
+                <!-- Next bg -->
+                <div id="next-bg">
+                    <i class="fas fa-circle" id="btn-avarta"></i>
+                    <i class="fas fa-circle" id="btn-phuthuy"></i>
+                    <i class="fas fa-circle" id="btn-aquaman"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- bottom -->
+        <div class="bottom">
+
+            <!-- Stt -->
+            <div id="stt">
+                <p>02.</p>
+            </div>
+
+            <!-- des -->
+            <div id="des">
+                <div id="namefilm">02. Avarta - Thế Thân</div>
+                <div id="control-des">
+                    <div id="year">
+                        <div id="dash"></div>
+                        <p style="margin: 0px 10px">02/27/2009</p>
+                    </div>
+                    <p id="noidung">
+                        Avatar also marketed as James Cameron's Avatar is a 2009 American 7 8epic science fiction film directed,
+                        written, produced, and co-edited by JamesCameron and starring Sam Worthington, Zoe Saldana, Stephen Lang, Michelle Rodriguez,
+                        and Sigourney Weaver. The film is set in the mid-22nd century when humans are colonizing Pandora,a lush habitable moon of a gas giant in the Alpha Centauri
+                        star system, in order to mine the valuable mineral
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        
+// phim avarta
+var avarta = new film(
+    
+    //stt
+    1,
+
+    //describe
+    "Avatar also marketed as James Cameron's Avatar is a 2009 American 7 8"
+    + "epic science fiction film directed, written, produced, and co-edited by James"
+    +"Cameron and starring Sam Worthington, Zoe Saldana, Stephen Lang, Michelle Rodriguez,"
+    +"and Sigourney Weaver. The film is set in the mid-22nd century when humans are colonizing Pandora,"
+    +"a lush habitable moon of a gas giant in the Alpha Centauri star system, in order to mine the valuable mineral",
+    
+    //tên phim
+    "Avarta - Thế Thân",
+
+    //background 1
+    "https://toplist.vn/images/800px/avatar-69698.jpg",
+
+    //background 2
+    "https://doanhnhanplus.vn/wp-content/uploads/2014/06/Avatar-Cirque-du-Soleil_poster.jpg",
+    "https://biluu.org/xem-phim/4684.76546-avatar-the-than-tap-full-s4"
+);
+
+//phim phù thuỷ
+    var phuthuy = new film(
+        
+        //stt
+        2,
+        
+        //describe
+        "Phù Thủy Tối Thượng Trong Đa Vũ Trụ Hỗn Loạn - Doctor Strange in the Multiverse of Madness bộ phim lấy bối"
+        + "cảnh diễn ra sau khi kết thúc cuộc chiến khốc liêt với Thanos trong phần phim EndGame."
+        + "Lúc này Doctor Strange một cựu bác sĩ phẩu thật với sức mạnh của mình, đã giành ra thời" 
+        +"gian để nghiên cứu và điều khiển về các viên đá thời gian. Tuy nhiên, nó lại mở ra một cánh cửa liên kết đến đa vũ trụ."
+        + "Để có thể khôi phục mọi thứ trở về như trước kia, Doctor Strange đã tìm đến sự trợ giúp của các người bạn của mình là Wong.",
+        
+        // Tên phim
+        "Phù thuỷ bóng tối",
+
+        //background
+        "https://i.ytimg.com/vi/lI9142wrVxg/maxresdefault.jpg",
+        
+        //background 2
+        "https://image.thanhnien.vn/w660/Uploaded/2022/ygtmjz/2020_10_10/strange_xfrl.jpg",
+        "https://biluu.org/xem-phim/5173.77069-phu-thuy-toi-thuong-tap-full"
+    );
+
+//phim aquaman
+    var aquaman =  new film(
+        
+        //stt
+        3, 
+        
+        //describe
+        "Aquaman được đạo diễn nổi tiếng với dòng phim kinh dị như Saw, Insidious, The Conjuring, The Nun và Annabelle"
+        + "đó là James Wan, nên có thể Aquaman sẽ không đi theo phong cách vui tươi hay bừng sức sống nhưng phần trước. Tại sự kiện DC FanDome,"
+        + "đao diễn James Wan đã trả lời bài phỏng vấn với lời lẽ xác nhận một số tình tiết 'kinh dị' sẽ có trong bộ phim. Cụ thể câu nói của ông như sau:"
+        + "“Cũng giống như phân cảnh tấn công của bọn Trench trong phần phim đầu tiên, phần 2 của Aquaman sẽ có một vài điểm nhấn kinh dị.",
+        
+        //tên phim
+        "Aquaman 2",
+
+        //background 1
+        "https://photo-cms-nghenhinvietnam.zadn.vn/w700/Uploaded/2022/cadwpqrnd/2021_07_30/aquaman_and_the_lost_kingdom_title_explained_sr_azup.jpg",
+
+        //background 2
+        "https://s3.cloud.cmctelecom.vn/tinhte1/2018/12/4515159_cover_aquaman-1.jpg",
+        "https://biluu.org/xem-phim/15963.190588-aquaman-de-vuong-atlantis-tap-full-s2",
+);
+
+var arrayFilm = [];
+function film(stt, des, name,bg1,bg2, link){
+    this.stt=stt;
+    this.des=des;
+    this.name=name;
+    this.bg1=bg1;
+    this.bg2=bg2;
+    this.link=link;
+}
+arrayFilm.push(avarta,phuthuy,aquaman);
+$("#btn-avarta").click(function(){
+    $("#noidung").html (avarta.des);
+    $("#stt").html ("0" +avarta.stt+".");
+    $("#namefilm").html ("0"+avarta.stt +". "+avarta.name);
+    $("#title").html("0"+avarta.stt +". "+avarta.name);
+    $("#btn-avarta").css("font-size", "25px");
+    $("#btn-aquaman").css("font-size", "18px");
+    $("#btn-phuthuy").css("font-size", "18px");
+    $(".top").css("background-image", "url('"+avarta.bg1+"')");
+    $(a).html("href",avarta.link);
+    // setInterval(function() {
+    //     setTimeout(function(){
+    //         $(".top").css("background-image", "url('"+avarta.bg2+"')")
+    //     },3000)
+    // }, 4000);
+    // setInterval(function() {
+    //     setTimeout(function(){
+    //         $(".top").css("background-image", "url('"+avarta.bg1+"')")
+    //     },1000)
+    // }, 5000);
+    $(a).html(`<a href="https://biluu.org/xem-phim/4684.76546-avatar-the-than-tap-full-s4"><button id="btn-watch"><i class="far fa-play-circle" style="margin: 0px; color:green"></i>Watch</button></a>`
+    );
+})
+$("#btn-aquaman").click(function(){
+    $("#noidung").html (aquaman.des);
+    $("#stt").html ("0" +aquaman.stt+".");
+    $("#namefilm").html ("0"+aquaman.stt +". "+aquaman.name);
+    $("#title").html("0"+aquaman.stt +". "+aquaman.name);
+    $("#btn-aquaman").css("font-size", "25px");
+    $("#btn-phuthuy").css("font-size", "18px");
+    $("#btn-avarta").css("font-size", "18px");
+    $(".top").css("background-image", "url('"+aquaman.bg1+"')")
+    // setInterval(function() {
+    //     setTimeout(function(){
+    //         $(".top").css("background-image", "url('"+aquaman.bg2+"')")
+    //     },3000)
+    // }, 4000);
+    // setInterval(function() {
+    //     setTimeout(function(){
+    //         $(".top").css("background-image", "url('"+aquaman.bg1+"')")
+    //     },1000)
+    // }, 5000);
+    $(a).html(`<a href="https://biluu.org/xem-phim/15963.190588-aquaman-de-vuong-atlantis-tap-full-s2"><button id="btn-watch"><i class="far fa-play-circle" style="margin: 0px; color:green"></i>Watch</button></a>`
+    );
+})
+$("#btn-phuthuy").click(function(){
+    $("#noidung").html (phuthuy.des);
+    $("#stt").html ("0" +phuthuy.stt+".");
+    $("#namefilm").html ("0"+phuthuy.stt +". "+phuthuy.name);
+    $("#title").html("0"+phuthuy.stt +". "+phuthuy.name);
+    $("#btn-phuthuy").css("font-size", "25px");
+    $("#btn-avarta").css("font-size", "18px");
+    $("#btn-aquaman").css("font-size", "18px");
+    $(".top").css("background-image", "url('"+phuthuy.bg1+"')")
+    $(a).html("href",('"'));
+    // setInterval(function() {
+    //     setTimeout(function(){
+    //         $(".top").css("background-image", "url('"+phuthuy.bg2+"')")
+    //     },3000)
+    // }, 4000);
+    // setInterval(function() {
+    //     setTimeout(function(){
+    //         $(".top").css("background-image", "url('"+phuthuy.bg1+"')")
+    //     },1000)
+    // }, 5000);
+})
+// setInterval(function() {
+//     setTimeout(function(){
+//         $(".top").css("background-image", "url('"+avarta.bg2+"')")
+//     },3000)
+// }, 4000);
+// setInterval(function() {
+//     setTimeout(function(){
+//         $(".top").css("background-image", "url('"+avarta.bg1+"')")
+//     },1000)
+// }, 5000);
+    </script>
+</body>
+</html>
